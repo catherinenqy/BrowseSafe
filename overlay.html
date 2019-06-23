@@ -46,9 +46,10 @@
 </head>
 <body>
 
-  <div onclick="closeWin()" id="overlay">
+  <div onclick="off()" id="overlay">
     
-    <div id="text">We have found a Trigger Warning on this web page.<br><br>Click anywhere to close the web page to avoid seeing this trigger.<br><br>Click <button id="offbutton"  onclick="off()">here</button>  to continue</div>
+    <div id="text">We have found a Trigger Warning on this web page.<br><br>Click <button id="offbutton"  onclick="closeWin()">here</button>  to close the web page to avoid seeing this trigger<br><br>Click anywhere to continue.</div>
+
     <div id="loading">Scanning webpage for triggers</div>
   </div>
 
@@ -76,7 +77,6 @@
   setTimeout(function(){
     preload.style.display="none";
     content.style.display="block";
-    
   }, 4000);
 
 
