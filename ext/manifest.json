@@ -12,7 +12,7 @@
   "default_locale": "en",
   "content_scripts": [
         {
-            "matches": ["https://www.dogster.com/dog-food/human-food-for-dogs"],
+            "matches": ["https://www.ammoman.com/blog/"],
             "js": ["src/index.js"],
             "run_at": "document_end"
         }
