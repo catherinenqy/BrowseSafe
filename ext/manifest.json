@@ -10,11 +10,11 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "background": {
-    "scripts": [
-      "src/bg/background.js"
-    ],
-    "persistent": true
-  },
-  "options_page": "src/options/index.html"
+  "content_scripts": [
+        {
+            "matches": ["https://www.dogster.com/dog-food/human-food-for-dogs"],
+            "js": ["src/index.js"],
+            "run_at": "document_end"
+        }
+    ]
 }
