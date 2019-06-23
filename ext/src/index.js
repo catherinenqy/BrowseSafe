@@ -1,3 +1,19 @@
+function displayLoad(){
+    var overlay = document.createElement('div');
+    overlay.id = "overlay";
+    overlay.style.cssText = 'position: fixed; display: block; width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,1); z-index: 1000; cursor: pointer;';
+   
+    var text = document.createElement('div');
+    text.style.cssText ='position: absolute; top: 50%;left: 50%;font-size: 30px;color: white;transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%); z-index: 1000;';
+    text.innerHTML = 'Scanning page for tw'; 
+    // document.body.insertAdjacentText(text, document.body.firstChild)
+    document.body.insertBefore(overlay, document.body.firstChild);
+    // insertIn(overlay, document.body.firstChild);
+    setTimeout(function(){
+        overlay.style.display="none";
+      }, 4000);
+}
+
 function processImages() {
 
     var images = document.getElementsByTagName("img")
@@ -28,6 +44,7 @@ function processImages() {
         body: JSON.stringify(data[i]), // body data type must match "Content-Type" header
         }).then(r => r.json().then(response => {
             tags.push(response.description.tags)
+            console.log(tags)
             if (response.description.tags.includes("weapon")) {
                 if (document.getElementById("overlay") == null) {
                     var elemDiv = document.createElement('div');
@@ -48,4 +65,5 @@ function processImages() {
     }
 }
 
+displayLoad()
 processImages()
