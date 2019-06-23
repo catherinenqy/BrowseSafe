@@ -9,17 +9,17 @@ function displayLoad(){
 
     var triggerText = document.createElement('div');
     triggerText.style.cssText ='display: none;position: absolute; top: 50%;left: 50%;font-size: 30px;color: #696969;transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%); z-index: 1000;';
-    triggerText.innerHTML = 'We have found a Trigger Warning on this web page.<br><br>Click anywhere to close the web page to avoid seeing this trigger.<br><br>Click<br>'; 
+    triggerText.innerHTML = 'We have found a Trigger Warning on this web page.<br><br> Close the web page to avoid seeing this trigger.<br><br>Wait 10 seconds to continue onto the web page<br>'; 
 
-    var button = document. createElement("button");
-    button.style.cssText='display: none;position: relative;font-size: 30px;z-index: 3;background-color: #FAEBD7;';
+    // var button = document. createElement("button");
+    // button.style.cssText='display: none;position: relative;font-size: 30px;z-index: 3;background-color: #FAEBD7;';
     // button.onclick = off();
-    button.innerHTML = "here";
+    // button.innerHTML = "here";
 
     // document.body.insertAdjacentText(text, document.body.firstChild)
     overlay.appendChild(loadingText);
     overlay.appendChild(triggerText);
-    triggerText.appendChild(button);
+    // triggerText.appendChild(button);
     document.body.insertBefore(overlay, document.body.firstChild);
 
     // insertIn(overlay, document.body.firstChild);
@@ -28,6 +28,9 @@ function displayLoad(){
         triggerText.style.display='block';
         button.style.display='block';
     }, 4000);
+    setTimeout(function(){
+        overlay.style.display="none";
+    }, 14000);
 }
 
 function off() {
