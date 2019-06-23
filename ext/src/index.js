@@ -2,7 +2,7 @@ function processImages() {
 
     var images = document.getElementsByTagName("img")
     var data = []
-    var output = []
+    var tags = []
 
     for (var i = 0; i < images.length; i++){
         data.push({url: images[i].src})
@@ -27,8 +27,23 @@ function processImages() {
         },
         body: JSON.stringify(data[i]), // body data type must match "Content-Type" header
         }).then(r => r.json().then(response => {
-            output.push(response.description.tags)
-            console.log(output)
+            tags.push(response.description.tags)
+            if (response.description.tags.includes("weapon")) {
+                if (document.getElementById("overlay") == null) {
+                    var elemDiv = document.createElement('div');
+                    elemDiv.id = "overlay";
+                    elemDiv.style.cssText = 'position: fixed;display: none;width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,1);z-index: 2;cursor: pointer;';
+                    document.body.insertBefore(elemDiv, document.body.firstChild);
+
+                    var text = document.createElement('div');
+                    text.style.cssText = 'width:100%;height:10%;background:rgb(192,192,192);';
+                    text.innerHTML = 'Added element with some data'; 
+                    window.document.body.insertBefore(text, window.document.body.firstChild);
+
+                    //<button id="offbutton"  onclick="off()">here</button>
+                }
+                
+            }
         }))
     }
 }

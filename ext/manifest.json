@@ -12,7 +12,7 @@
   "default_locale": "en",
   "content_scripts": [
         {
-            "matches": ["https://www.ammoman.com/blog/"],
+            "matches": ["http://*/*", "https://*/*"],
             "js": ["src/index.js"],
             "run_at": "document_end"
         }
