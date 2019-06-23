@@ -1,23 +1,37 @@
 function displayLoad(){
     var overlay = document.createElement('div');
     overlay.id = "overlay";
-    overlay.style.cssText = 'position: fixed; display: block; width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,1); z-index: 999; cursor: pointer;';
+    overlay.style.cssText = 'background-image: url("http://papers.co/wallpaper/papers.co-sm58-cool-pastel-blur-gradation-blue-25-wallpaper.jpg");position: fixed; display: block; width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,1); z-index: 999; cursor: pointer;';
 
-    var text = document.createElement('div');
-    text.style.cssText ='position: absolute; top: 50%;left: 50%;font-size: 30px;color: white;transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%); z-index: 1000;';
-    text.innerHTML = 'Scanning page for tw'; 
+    var loadingText = document.createElement('div');
+    loadingText.style.cssText ='display: block;position: absolute; top: 50%;left: 50%;font-size: 30px;color: #696969;transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%); z-index: 1000;';
+    loadingText.innerHTML = 'scanning web page for trigger warnings<br>'; 
+
+    var triggerText = document.createElement('div');
+    triggerText.style.cssText ='display: none;position: absolute; top: 50%;left: 50%;font-size: 30px;color: #696969;transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%); z-index: 1000;';
+    triggerText.innerHTML = 'We have found a Trigger Warning on this web page.<br><br>Click anywhere to close the web page to avoid seeing this trigger.<br><br>Click<br>'; 
 
     var button = document. createElement("button");
-    button.innerHTML = "Do Something";
+    button.style.cssText='display: none;position: relative;font-size: 30px;z-index: 3;background-color: #FAEBD7;';
+    // button.onclick = off();
+    button.innerHTML = "here";
 
     // document.body.insertAdjacentText(text, document.body.firstChild)
-    overlay.appendChild(text);
+    overlay.appendChild(loadingText);
+    overlay.appendChild(triggerText);
+    triggerText.appendChild(button);
     document.body.insertBefore(overlay, document.body.firstChild);
 
     // insertIn(overlay, document.body.firstChild);
     setTimeout(function(){
-        overlay.style.display="none";
+        loadingText.style.display="none";
+        triggerText.style.display='block';
+        button.style.display='block';
     }, 4000);
+}
+
+function off() {
+  document.getElementById('overlay').style.display = "none";
 }
 
 function processImages() {
@@ -63,7 +77,7 @@ function processImages() {
                 text.innerHTML = 'Added element with some data'; 
                 window.document.body.insertBefore(text, window.document.body.firstChild);
 
-                    //<button id="offbutton"  onclick="off()">here</button>
+                    // <button id="offbutton"  onclick="off()">here</button>
                 }
                 
             }
@@ -73,3 +87,5 @@ function processImages() {
 
 displayLoad()
 processImages()
+
+
